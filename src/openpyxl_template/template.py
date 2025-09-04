@@ -58,7 +58,6 @@ class ExcelTemplate(object):
         context: Dict[str, Any], 
     ) -> None:
         self.render_init()
-
         for sheet in self.workbook.sheetnames:
             ws_source = self.workbook[sheet]
             blocks, context_values = self.find_block(ws_source)
@@ -115,11 +114,13 @@ class ExcelTemplate(object):
             # merge_cell
             self.merge_cell(ws_des)
 
-        for sheet in self.workbook.sheetnames:
-            self.workbook.remove(self.workbook[f"{sheet}"])
+        # for sheet in self.workbook.sheetnames:
+        #     self.workbook.remove(self.workbook[f"{sheet}"])
 
-    def save(self, filename: Union[IO[bytes], str, PathLike], *args, **kwargs) -> None:
-        self.workbook.save(filename, *args, **kwargs)
+    def save(self, filename: Union[IO[bytes], str, PathLike]) -> None:
+        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+        print(self.workbook.sheetnames)
+        self.workbook.save(filename)
         self.is_saved = True              
 
     ######################## Preprocessing block ##########################

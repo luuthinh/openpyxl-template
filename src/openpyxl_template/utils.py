@@ -11,7 +11,6 @@ from dateutil.parser import parse
 from datetime import date, datetime
 from PIL import Image as ImgPIL
 
-from odoo.exceptions import UserError
 from openpyxl.styles import NamedStyle, Font, PatternFill, Border, Side, Alignment, Protection
 from openpyxl.drawing.image import Image
 
@@ -99,7 +98,7 @@ def render(value, context, cell, new_cell, wb, ws_des):
         pos = ""
         if cell:
             pos = f"{cell.column_letter}{cell.row}"
-        raise UserError(str(e) + f" - {pos}")
+        raise Exception(str(e) + f" - {pos}")
     
     result = format_value(result)
     if isinstance(result, dict):

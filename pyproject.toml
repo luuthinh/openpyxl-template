@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "openpyxl_template"
+version = "0.1.0"
+description = "A tool for generating Excel reports using a Jinja2-like templating approach."
+authors = [
+  { name="Luu Thinh", email="luuthinh2705@gmail.com" }
+]
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+dependencies = ["openpyxl>=3.1.0"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
